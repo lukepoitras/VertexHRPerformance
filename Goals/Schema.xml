@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<List xmlns:ows="Microsoft SharePoint" Title="Goals" FolderCreation="TRUE" Direction="$Resources:Direction;" Url="Lists/Goals" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+  <MetaData>
+    <ContentTypes>
+    <ContentType ID="0x0100523466622d3e46fc985b6416800b83b1" Name="ListFieldsContentType">
+        <FieldRefs>
+        <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" />
+          <FieldRef ID="{2A16B911-B094-46e6-A7CD-227EEA3EFFDB}" Name="ReportDescription" />
+          <FieldRef ID="{15de566b-a0bd-4096-a0e2-3dc1dd7660e0}" Name="Visibility" />
+          <FieldRef ID="{64cd368d-2f95-4bfc-a1f9-8d4324ecb007}" Name="StartDate" />
+          <FieldRef ID="{8A121252-85A9-443d-8217-A1B57020FADF}" Name="_EndDate" />
+          <FieldRef ID="{1DAB9B48-2D1A-47b3-878C-8E84F0D211BA}" Name="_Status" />
+          <FieldRef ID="{a8345b7f-69c5-423e-9bb1-e3665ab1ffee}" Name="Outcome1" />
+          <FieldRef ID="{50d97352-c027-4ef5-87d1-6f2764e6d347}" Name="Catagory" />
+        </FieldRefs>
+      </ContentType>
+      <ContentTypeRef ID="0x01">
+        <Folder TargetName="Item" />
+      </ContentTypeRef>
+      <ContentTypeRef ID="0x0120" />
+    </ContentTypes>
+    <Fields>
+      <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" />
+      <Field ID="{2A16B911-B094-46e6-A7CD-227EEA3EFFDB}" Name="ReportDescription" StaticName="ReportDescription" Description="$Resources:spscore,BizAppsFields_ReportDescription_Description;" DisplayName="Description" Group="$Resources:spscore,BizAppsFields_ReportGroup;" Type="Note" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+      <Field Name="Visibility" ID="{15de566b-a0bd-4096-a0e2-3dc1dd7660e0}" DisplayName="Visibility" Required="TRUE" Type="Choice">
+        <ErrorText>
+          You must specify a value for this required field
+        </ErrorText>
+        <CHOICES>
+          <CHOICE>Public</CHOICE>
+          <CHOICE>Private</CHOICE>
+        </CHOICES>
+        <MAPPINGS>
+          <MAPPING Value="1">Public</MAPPING>
+          <MAPPING Value="2">Private</MAPPING>
+        </MAPPINGS>
+      </Field>
+      <Field ID="{64cd368d-2f95-4bfc-a1f9-8d4324ecb007}" Name="StartDate" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="StartDate" Group="$Resources:core,Base_Columns;" Type="DateTime" Format="DateOnly" DisplayName="$Resources:core,Start_Date;">
+        <Default>[today]</Default>
+      </Field>
+      <Field ID="{8A121252-85A9-443d-8217-A1B57020FADF}" Name="_EndDate" Group="$Resources:core,Base_Columns;" Type="DateTime" DisplayName="$Resources:core,End_Date;" Format="DateOnly" SourceID="http://schemas.microsoft.com/sharepoint/v3/fields" StaticName="_EndDate">
+        <Default>[today]</Default>
+      </Field>
+      <Field ID="{1DAB9B48-2D1A-47b3-878C-8E84F0D211BA}" Name="_Status" Group="$Resources:core,Document_Columns;" Type="Choice" DisplayName="$Resources:core,Status;" StaticName="_Status" FillInChoice="FALSE">
+        <CHOICES> 
+          <CHOICE>Draft</CHOICE>
+          <CHOICE>Active</CHOICE>
+          <CHOICE>Closed</CHOICE>
+        </CHOICES>
+        <MAPPINGS>
+          <MAPPING Value="1">Draft</MAPPING>
+          <MAPPING Value="2">Active</MAPPING>
+          <MAPPING Value="3">Closed</MAPPING>
+        </MAPPINGS>
+        <Default>Draft</Default>
+      </Field>
+      <Field Name="Outcome1" ID="{a8345b7f-69c5-423e-9bb1-e3665ab1ffee}" DisplayName="Outcome" Type="Note" />
+      <Field Name="Catagory" ID="{50d97352-c027-4ef5-87d1-6f2764e6d347}" Type="Choice" DisplayName="Catagory" StaticName="Catagory">
+    
+      </Field>
+ </Fields>
+    <Views>
+      
+      
+    <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          
+        <FieldRef Name="LinkTitleNoMenu">
+        </FieldRef>
+        </ViewFields>
+        <Query>
+          <OrderBy>
+          <FieldRef Name="Modified" Ascending="FALSE"> 
+          </FieldRef>
+          </OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,addnewitem)" />
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_ONET_HOME)" />
+        </ParameterBindings>
+      </View>
+      <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          
+        <FieldRef Name="LinkTitle"></FieldRef>
+          <FieldRef Name="ReportDescription" />
+          <FieldRef Name="Visibility" />
+          <FieldRef Name="StartDate" />
+          <FieldRef Name="_EndDate" />
+          <FieldRef Name="_Status" />
+          <FieldRef Name="Outcome1" />
+          <FieldRef Name="Catagory" />
+        </ViewFields>
+        <Query>
+          <OrderBy>  
+          <FieldRef Name="ID">
+          </FieldRef>
+          </OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
+        </ParameterBindings>
+      </View>
+    </Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
+</List>
